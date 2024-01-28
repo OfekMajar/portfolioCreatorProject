@@ -1,0 +1,18 @@
+#headerContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+li {
+  list-style-type: none;
+}
+#navbarContainer {
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+}
+.userNameDisplay {
+  display: flex;
+  gap: 5px;
+}

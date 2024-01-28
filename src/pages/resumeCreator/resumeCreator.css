@@ -1,0 +1,23 @@
+#ResumeFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#workExpContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.singleWorkExpContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1px;
+  border: 1px solid black;
+}
+#ResumeFormContainer form {
+  width: 35vw;
+}
+.lableAndInput {
+  display: flex;
+  justify-content: space-between;
+}
