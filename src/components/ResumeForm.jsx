@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import WorkExperiences from "./WorkExperiences";
 function ResumeForm() {
-const [currentFormStage,setCurrentFormStage]=useState(1)
-const [formData,setFormData]=useState({
-  firstName: "",
-  lastName: "",
-  email: "",
-  phoneNumber: "",
-  aboutMe: "",
-})
+
+const [formData,setFormData]=useState({})
   const [workExpList, setWorkExpList] = useState([
     <div className="singleWorkExpContainer">
       <div className="lableAndInput">
@@ -51,36 +45,7 @@ const [formData,setFormData]=useState({
   const changeHandler=(e)=>{
     formData[e.target.name]=e.target.value
     setFormData({...formData})
-    console.log(formData);
   }
-  const isStageComplete=(stage)=>{
-    console.log(stage);
-    switch (stage) {
-      case 1:
-        return (
-          formData.firstName !== "" &&
-          formData.lastName !== "" &&
-          formData.email !== "" &&
-          formData.phoneNumber !== "" &&
-          formData.aboutMe !== ""
-        );
-        break;
-    
-      default:
-        break;
-    }
-  }
-const nextStage=(e)=>{
-  e.preventDefault()
-  if(isStageComplete(currentFormStage)){
-    setCurrentFormStage(currentFormStage+1)
-    console.log("Stage is done ");
-
-  }else{
-    console.log("Stage not done yet");
-  }
-  
-}
   return (
     <form>
       <section id="contactInfoSection">
@@ -88,35 +53,34 @@ const nextStage=(e)=>{
         <div>
           <div className="lableAndInput">
             <label htmlFor="">First name</label>
-            <input onChange={changeHandler} type="text" name="firstName" />
+            <input type="text" name="firstName" />
           </div>
           <div className="lableAndInput">
             <label htmlFor="">Last name</label>
-            <input onChange={changeHandler} type="text" name="lastName" />
+            <input type="text" name="lastName" />
           </div>
         </div>
         <div>
           <div className="lableAndInput">
             <label htmlFor="">Email:</label>
-            <input onChange={changeHandler} name="email" type="email" />
+            <input name="email" type="email" />
           </div>
           <div className="lableAndInput">
             <label htmlFor="">Phone number:</label>
-            <input onChange={changeHandler} name="phoneNumber" type="text" />
+            <input name="phoneNumber" type="text" />
           </div>
         </div>
         <div className="lableAndInput">
           <label htmlFor="">About me:</label>
-          <textarea onChange={changeHandler} name="aboutMe" type="text" id="aboutMeInput" />
+          <textarea name="aboutMe" type="text" id="aboutMeInput" />
         </div>
-        <button onClick={nextStage}  >Next</button>
       </section>
       <div id="workExpContainer">
         <h2>Work experience:</h2>
         {workExpList.map((item) => {
           return item;
         })}
-       {currentFormStage==2? <button onClick={createMoreWorkExp}> add Another</button>:null}
+        <button onClick={createMoreWorkExp}> add Another</button>
       </div>
       <div>
         <h2>Education</h2>
