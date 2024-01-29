@@ -1,17 +1,19 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import WorkExperiences from "./WorkExperiences";
 import Educations from "./Educations";
-import {UserContext} from "../context/User";
+import ContactInfo from "./ContactInfo";
+import { UserContext } from "../context/User";
+import { addDoc, collection, doc, query } from "firebase/firestore";
+import { db } from "../config/firebase";
 function ResumeForm() {
   const { user } = useContext(UserContext);
-
   const [formData, setFormData] = useState({});
   const [workExpData, setWorkExpData] = useState({});
   const [workExpList, setWorkExpList] = useState([]);
   const [educationData, setEducationData] = useState({});
   const [educationsList, setEducationsList] = useState([]);
   const [currentFormStage, setCurrentFormStage] = useState(1);
-  const [userData, setUserData] = useState({userId:"T"});
+  const [userData, setUserData] = useState({});
   //*Change handlers
   const changeContactInfoHandler = (e) => {
     formData[e.target.name] = e.target.value;
@@ -73,7 +75,12 @@ function ResumeForm() {
         {
           userData[e.target.name] = [...educationsList];
           setUserData({ ...userData });
-        setCurrentFormStage(currentFormStage + 1);
+          setCurrentFormStage(currentFormStage + 1);
+        }
+        break;
+      case 4:
+        {
+          setUserData({ ...userData});
         }
         break;
       default:
@@ -85,65 +92,23 @@ function ResumeForm() {
     e.preventDefault();
     setCurrentFormStage(currentFormStage - 1);
   };
-  const sumbitHandler = (e) => {
+  const sumbitHandler = async(e) => {
     e.preventDefault();
-    console.log(userData);
+    if (!user) {
+      return alert("you must log in ");
+    }
+    setUserData({ ...userData, userId: user.userId });
+    const collectionRef = collection(db,"Resumes")
+   await addDoc(collectionRef,userData)
+    
+    
+    
   };
+  console.log(userData);
   return (
     <form onSubmit={sumbitHandler}>
       {currentFormStage == 1 ? (
-        <section id="contactInfoSection">
-          <h2>Contact Info:</h2>
-          <div>
-            <div className="lableAndInput">
-              <label htmlFor="">First name</label>
-              <input
-                onChange={changeContactInfoHandler}
-                type="text"
-                name="firstName"
-                defaultValue={formData.firstName}
-              />
-            </div>
-            <div className="lableAndInput">
-              <label htmlFor="">Last name</label>
-              <input
-                onChange={changeContactInfoHandler}
-                type="text"
-                name="lastName"
-                defaultValue={formData.lastName}
-              />
-            </div>
-          </div>
-          <div>
-            <div className="lableAndInput">
-              <label htmlFor="">Email:</label>
-              <input
-                onChange={changeContactInfoHandler}
-                name="email"
-                type="email"
-                defaultValue={formData.email}
-              />
-            </div>
-            <div className="lableAndInput">
-              <label htmlFor="">Phone number:</label>
-              <input
-                onChange={changeContactInfoHandler}
-                name="phoneNumber"
-                type="text"
-                defaultValue={formData.phoneNumber}
-              />
-            </div>
-          </div>
-          <div className="lableAndInput">
-            <label htmlFor="">About me:</label>
-            <textarea
-              onChange={changeContactInfoHandler}
-              name="aboutMe"
-              type="text"
-              id="aboutMeInput"
-            />
-          </div>
-        </section>
+        <ContactInfo changeHandler={changeContactInfoHandler} />
       ) : currentFormStage == 2 ? (
         <section id="workExpContainer">
           <h2>Work experience:</h2>
@@ -205,9 +170,11 @@ function ResumeForm() {
             </button>
           </div>
         ) : null}
-        {currentFormStage ==4? <div>
-          <button type="sumbit">Sumbit</button>
-        </div>:null}
+        {currentFormStage == 4 ? (
+          <div>
+            <button type="sumbit">Sumbit</button>
+          </div>
+        ) : null}
       </section>
     </form>
   );

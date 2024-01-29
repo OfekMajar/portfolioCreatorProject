@@ -35,6 +35,7 @@ function Authentication() {
           userEmail,
           userName,
           role: "regular",
+          userId:user.uid
         });
         setIsLoginMode(true);
 

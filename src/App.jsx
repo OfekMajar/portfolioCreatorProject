@@ -10,15 +10,8 @@ import { UserContext } from "./context/User";
 import "./App.css";
 
 function App() {
-  const { onUserChange, user } = useContext(UserContext);
-  let isInitialRender = true
-  useEffect(() => {
-    if (isInitialRender) {
-      isInitialRender = false;
-      return;
-    }
-    onUserChange();
-  }, [user]);
+  const {  user } = useContext(UserContext);
+ 
   return (
     <>
       <BrowserRouter>
