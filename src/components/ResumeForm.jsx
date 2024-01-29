@@ -1,46 +1,84 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import WorkExperiences from "./WorkExperiences";
+import Educations from "./Educations";
+import {UserContext} from "../context/User";
 function ResumeForm() {
+  const { user } = useContext(UserContext);
+
   const [formData, setFormData] = useState({});
-  const [workExpData, setWorkExpData] = useState([{}]);
-
+  const [workExpData, setWorkExpData] = useState({});
+  const [workExpList, setWorkExpList] = useState([]);
+  const [educationData, setEducationData] = useState({});
+  const [educationsList, setEducationsList] = useState([]);
   const [currentFormStage, setCurrentFormStage] = useState(1);
-  const [userData, setUserData] = useState({});
-  const [amoutOfWorkExp, setAmoutOfWorkExp] = useState(1);
-
+  const [userData, setUserData] = useState({userId:"T"});
+  //*Change handlers
   const changeContactInfoHandler = (e) => {
-    setWorkExpData([...workExpData,{}])
+    formData[e.target.name] = e.target.value;
+    setFormData({ ...formData });
+    console.log(formData);
   };
 
-  const changeWorkExpHandler=(e)=>{
-    
-  }
-
-  const [workExpList, setWorkExpList] = useState([
-    <WorkExperiences
-      changeHandler={changeWorkExpHandler}
-      amoutOfWorkExp={amoutOfWorkExp}
-    />,
-  ]);
-
+  const handleWorkExp = (e) => {
+    workExpData[e.target.name] = e.target.value;
+    setWorkExpData({ ...workExpData });
+    console.log(workExpData);
+  };
+  const handleChangeEducation = (e) => {
+    educationData[e.target.name] = e.target.value;
+    setEducationData({ ...educationData });
+    console.log(educationData);
+  };
+  //*
+  //* rendering and adding more educations and work experiences
+  const [workExpRederList, setWorkExpRederList] = useState([]);
+  const [educationRenderList, setEducationRenderList] = useState([]);
   const createMoreWorkExp = (e) => {
-    e.preventDefault();
-    setAmoutOfWorkExp(amoutOfWorkExp + 1);
-    console.log(amoutOfWorkExp);
-    setWorkExpList([
-      ...workExpList,
-      <WorkExperiences
-        changeHandler={changeWorkExpHandler}
-        amoutOfWorkExp={amoutOfWorkExp + 1}
-      />,
+    setWorkExpList([...workExpList, workExpData]);
+    setWorkExpRederList([
+      ...workExpRederList,
+      <WorkExperiences changeHandler={handleWorkExp} />,
     ]);
   };
 
+  const createMoreEducation = (e) => {
+    setEducationsList([...educationsList, educationData]);
+    setEducationRenderList([
+      ...educationRenderList,
+      <Educations changeHandler={handleChangeEducation} />,
+    ]);
+  };
+
+  useEffect(() => {
+    createMoreWorkExp();
+    createMoreEducation();
+  }, []);
+  //*
   const nextStage = (e) => {
-    e.preventDefault();
-    userData[e.target.name] = { ...formData };
-    setUserData({ ...userData });
-    setCurrentFormStage(currentFormStage + 1);
+    switch (currentFormStage) {
+      case 1:
+        userData[e.target.name] = { ...formData };
+        setUserData({ ...userData });
+        setCurrentFormStage(currentFormStage + 1);
+
+        break;
+      case 2:
+        {
+          userData[e.target.name] = [...workExpList];
+          setUserData({ ...userData });
+          setCurrentFormStage(currentFormStage + 1);
+        }
+        break;
+      case 3:
+        {
+          userData[e.target.name] = [...educationsList];
+          setUserData({ ...userData });
+        setCurrentFormStage(currentFormStage + 1);
+        }
+        break;
+      default:
+        break;
+    }
   };
 
   const prevStage = (e) => {
@@ -109,25 +147,30 @@ function ResumeForm() {
       ) : currentFormStage == 2 ? (
         <section id="workExpContainer">
           <h2>Work experience:</h2>
-          {workExpList.map((item) => {
-            // console.log();
+          {workExpRederList.map((item) => {
             return item;
           })}
-          <button onClick={createMoreWorkExp}> add Another</button>
+          <button name="workExp" onClick={createMoreWorkExp}>
+            {" "}
+            add Another
+          </button>
         </section>
       ) : currentFormStage == 3 ? (
         <section id="educationContainer">
           <h2>Education</h2>
-          <div className="lableAndInput">
-            <label htmlFor=""></label>
-            <input type="text" />
-          </div>
+          {educationRenderList.map((item) => {
+            return item;
+          })}
+          <button type="button" name="education" onClick={createMoreEducation}>
+            {" "}
+            add Another
+          </button>
         </section>
       ) : null}
       <section id="nextAndPrevBtns">
         {currentFormStage == 1 ? (
           <div>
-            <button onClick={nextStage} name="userContactInfo">
+            <button type="button" onClick={nextStage} name="userContactInfo">
               {" "}
               Next
             </button>
@@ -135,18 +178,36 @@ function ResumeForm() {
         ) : null}
         {currentFormStage == 2 ? (
           <div>
-            <button onClick={prevStage}> Prev</button>
-            <button onClick={nextStage} name="userWorkExp">
+            <button type="button" onClick={prevStage}>
+              {" "}
+              Prev
+            </button>
+            <button type="button" onClick={nextStage} name="userWorkExp">
               Next{" "}
             </button>
           </div>
         ) : null}
         {currentFormStage == 3 ? (
           <div>
-            <button onClick={prevStage}> Prev</button>
-            <button>Sumbit </button>
+            <button type="button" onClick={prevStage}>
+              {" "}
+              Prev
+            </button>
+            <button onClick={nextStage} name="educations">
+              next
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                console.log(userData);
+              }}>
+              userData
+            </button>
           </div>
         ) : null}
+        {currentFormStage ==4? <div>
+          <button type="sumbit">Sumbit</button>
+        </div>:null}
       </section>
     </form>
   );

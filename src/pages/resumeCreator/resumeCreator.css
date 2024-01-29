@@ -3,12 +3,12 @@
   flex-direction: column;
   align-items: center;
 }
-#workExpContainer {
+#workExpContainer, #educationContainer{
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.singleWorkExpContainer {
+.singleWorkExpContainer,.SingleEducationContainer {
   display: flex;
   flex-direction: column;
   padding: 1px;

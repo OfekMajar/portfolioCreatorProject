@@ -1,7 +1,7 @@
 import React from "react";
 
 function WorkExperiences(props) {
-  const {changeHandler,amoutOfWorkExp} = props
+  const { changeHandler } = props;
   return (
     <div className="singleWorkExpContainer">
       <div className="lableAndInput">
@@ -10,17 +10,12 @@ function WorkExperiences(props) {
           type="text"
           onChange={changeHandler}
           required
-          name={`companyName${amoutOfWorkExp}`}
+          name={`companyName`}
         />
       </div>
       <div className="lableAndInput">
         <label htmlFor="">Role:</label>
-        <input
-          type="text"
-          onChange={changeHandler}
-          required
-          name={`role${amoutOfWorkExp}`}
-        />
+        <input type="text" onChange={changeHandler} required name={`role`} />
       </div>
       <div className="lableAndInput">
         <label htmlFor="">Time frame:</label>
@@ -28,7 +23,7 @@ function WorkExperiences(props) {
           type="text"
           onChange={changeHandler}
           required
-          name={`timeFrame${amoutOfWorkExp}`}
+          name={`timeFrame`}
         />
       </div>
     </div>

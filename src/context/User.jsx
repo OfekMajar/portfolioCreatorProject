@@ -1,6 +1,6 @@
 import { collection, doc, getDoc, query } from "firebase/firestore";
 import { db, auth } from "../config/firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 import { onAuthStateChanged,signOut } from "firebase/auth";
 
@@ -16,6 +16,9 @@ export default function UserProvider({ children }) {
         console.log(error);
     });
   }
+  useEffect(()=>{
+    console.log("firstt");
+  },[])
   const onUserChange = () => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
