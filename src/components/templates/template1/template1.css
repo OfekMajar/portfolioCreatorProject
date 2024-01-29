@@ -1,0 +1,43 @@
+#temp1Container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 500px;
+  height: 600px;
+  padding: 10px;
+}
+
+
+.userFullName {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 3px solid rgba(128, 128, 128, 0.591);
+}
+.userFullName span {
+  font-size: 30px;
+}
+.content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.contentColumn {
+  height: 95%;
+  display: flex;
+}
+.leftContentColumn,
+.rightContentColumn {
+  height: 100%;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+
+  padding: 5px;
+}
+.leftContentColumn {
+  border-right: 3px solid rgba(128, 128, 128, 0.591);
+}
+
+.rightContentColumn {
+  border-left: 3px solid rgba(128, 128, 128, 0.591);
+}
