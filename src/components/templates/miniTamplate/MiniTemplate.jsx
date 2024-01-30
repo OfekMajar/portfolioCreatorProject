@@ -6,7 +6,9 @@ function MiniTemplate() {
   const [chosenTemplate, setChosenTemplate] = useState();
   return (
     <div id="templateOptions">
+        <div id="smallerCover">
       <Template1 isBig={false} />
+      </div>
     </div>
   );
 }

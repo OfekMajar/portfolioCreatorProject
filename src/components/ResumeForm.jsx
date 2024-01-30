@@ -5,7 +5,7 @@ import ContactInfo from "./ContactInfo";
 import { UserContext } from "../context/User";
 import { addDoc, collection, doc, query } from "firebase/firestore";
 import { db } from "../config/firebase";
-function ResumeForm() {
+function ResumeForm({selectedTemplate}) {
   const { user } = useContext(UserContext);
   const [formData, setFormData] = useState({});
   const [workExpData, setWorkExpData] = useState({});
@@ -14,6 +14,10 @@ function ResumeForm() {
   const [educationsList, setEducationsList] = useState([]);
   const [currentFormStage, setCurrentFormStage] = useState(1);
   const [userData, setUserData] = useState({});
+  console.log(selectedTemplate,user.userId);
+  useEffect(()=>{
+setUserData({ userId: user.userId,selectedTemplate:selectedTemplate})
+  },[selectedTemplate])
   //*Change handlers
   const changeContactInfoHandler = (e) => {
     formData[e.target.name] = e.target.value;
@@ -97,7 +101,7 @@ function ResumeForm() {
     if (!user) {
       return alert("you must log in ");
     }
-    setUserData({ ...userData, userId: user.userId });
+    setUserData({ ...userData });
     const collectionRef = collection(db,"Resumes")
    await addDoc(collectionRef,userData)
     

@@ -2,15 +2,12 @@
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  width: 500px;
-  height: 800px;
+  width: 450px;
+  min-height: 600px;
   padding: 10px;
 }
 
-.smallTemplate {
-  transform: scale(0.4);
-  
-}
+
 .userFullName {
   display: flex;
   flex-direction: column;

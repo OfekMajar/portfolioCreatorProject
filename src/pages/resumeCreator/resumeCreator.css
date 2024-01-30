@@ -2,22 +2,65 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 25px;
 }
 #templateChooserContainer {
   display: flex;
   width: 80%;
+  justify-content: space-between;
 }
+#templatesOptionsContainer{
+  width: 40%;
+}
+#templateOptions {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+}
+.singleOptionBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  height: auto;
+  border-radius: 5px;
+}
+.selectedTemplate{
+  border: 2px solid blue;
+}
+img{
+  width: 100%;
+}
+#templateViewer{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirmTemplateBtnContainer{
+  display: flex;align-items: center;justify-content: center;
+}
+#confirmTemplateBtn{
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 10px;
+  background-color: #ff0000;
+  color:#fff;
+  transition: all 0.1s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#confirmTemplateBtn:active {
+transform: translateY(5px);
+box-shadow: none;
+}
+
 #workExpContainer,
 #educationContainer {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-#templatesOptionsContainer{
-  position: relative;}
-#templateOptions {
-  height: 50%;
-  position: relative;
 }
 .singleWorkExpContainer,
 .SingleEducationContainer {
