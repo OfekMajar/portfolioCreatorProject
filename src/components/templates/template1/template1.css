@@ -3,11 +3,14 @@
   flex-direction: column;
   border: 1px solid black;
   width: 500px;
-  height: 600px;
+  height: 800px;
   padding: 10px;
 }
 
-
+.smallTemplate {
+  transform: scale(0.4);
+  
+}
 .userFullName {
   display: flex;
   flex-direction: column;
@@ -40,4 +43,7 @@
 
 .rightContentColumn {
   border-left: 3px solid rgba(128, 128, 128, 0.591);
+}
+.aboutMe {
+  width: 80%;
 }

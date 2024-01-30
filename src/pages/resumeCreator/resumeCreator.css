@@ -3,12 +3,24 @@
   flex-direction: column;
   align-items: center;
 }
-#workExpContainer, #educationContainer{
+#templateChooserContainer {
+  display: flex;
+  width: 80%;
+}
+#workExpContainer,
+#educationContainer {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.singleWorkExpContainer,.SingleEducationContainer {
+#templatesOptionsContainer{
+  position: relative;}
+#templateOptions {
+  height: 50%;
+  position: relative;
+}
+.singleWorkExpContainer,
+.SingleEducationContainer {
   display: flex;
   flex-direction: column;
   padding: 1px;

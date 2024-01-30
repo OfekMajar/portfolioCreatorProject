@@ -5,8 +5,8 @@ import "./miniTemplate.css";
 function MiniTemplate() {
   const [chosenTemplate, setChosenTemplate] = useState();
   return (
-    <div>
-      <Template1 />
+    <div id="templateOptions">
+      <Template1 isBig={false} />
     </div>
   );
 }
