@@ -7,7 +7,7 @@ function MiniTemplate() {
   return (
     <div id="templateOptions">
         <div id="smallerCover">
-      <Template1 isBig={false} />
+      <Template1 isSmall={true} />
       </div>
     </div>
   );

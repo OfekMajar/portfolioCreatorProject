@@ -1,54 +1,39 @@
-import { collection, doc, getDoc, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { db, auth } from "../config/firebase";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { UserContext } from "./User";
 
-export const UserContext = createContext({});
+export const ResumesContext = createContext({});
 
-export default function UserProvider({ children }) {
-  const [user, setUser] = useState();
-  const signOutHandler = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("user Is OUTTT");
-        setUser();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  useEffect(() => {
-    onUserChange();
-  }, []);
-  const onUserChange = () => {
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const userRef = doc(db, "users", user.uid);
-        try {
-          const docSnapshot = await getDoc(userRef);
-          const userDbData = docSnapshot.data();
-          console.log(userDbData);
-          setUser({ ...userDbData });
-        } catch (error) {
-          console.log(error);
-        }
-      } else {
-        setUser();
-      }
-    });
-  };
-  const setUserFromDb = async (user) => {
-    console.log(user.uid);
-    const userRef = doc(db, "users", user.uid);
+export default function ResumesProvider({ children }) {
+  const { user } = useContext(UserContext);
+  const [resumes, setResumes] = useState([]);
+
+  const resumesFromDb = async () => {
+
     try {
-      const docSnapshot = await getDoc(userRef);
-      const userDbData = docSnapshot.data();
-      setUser({ ...userDbData});
+      const collectionRef =collection(db, "Resumes")
+      const q = query(collectionRef, where("userId", "==", user.userId));
+      const querySnapshot = await getDocs(q);
+      const tempResumes=[]
+      querySnapshot.docs.forEach((item) => {
+        tempResumes.push(item.data());
+      });
+      setResumes(tempResumes)
     } catch (error) {
       console.log(error);
     }
   };
-  const shared = { user, setUser, setUserFromDb, signOutHandler };
-  return <UserContext.Provider value={shared}>{children}</UserContext.Provider>;
+  const shared = { resumes, resumesFromDb };
+  return (
+    <ResumesContext.Provider value={shared}>{children}</ResumesContext.Provider>
+  );
 }

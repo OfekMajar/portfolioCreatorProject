@@ -39,6 +39,8 @@ img{
 }
 .confirmTemplateBtnContainer{
   display: flex;align-items: center;justify-content: center;
+  flex-direction: column;
+  row-gap: 10px;
 }
 #confirmTemplateBtn{
   width: 100px;
@@ -54,6 +56,9 @@ img{
 #confirmTemplateBtn:active {
 transform: translateY(5px);
 box-shadow: none;
+}
+button:hover{
+  cursor: pointer;
 }
 
 #workExpContainer,

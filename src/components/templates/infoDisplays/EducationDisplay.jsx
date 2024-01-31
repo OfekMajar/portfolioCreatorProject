@@ -1,17 +1,16 @@
-import React from 'react'
+import React from "react";
 
 function EducationDisplay(props) {
   // {institution:"institution Name",degree:"degree",major:"major" ,graduationYear:"graduation Year"}
-  const {institution,degree,major,graduationYear} =props.education
-  console.log(degree);
+  const { institution, degree, major, graduationYear } = props.education;
   return (
-    <div className='displaySingleEducation'>
-      <p>{institution}</p>
-      <p>{degree}</p>
-      <p>{major}</p>
-      <p>{graduationYear}</p>
+    <div className="displaySingleEducation">
+      {institution == "" ? null : <p>institution: {institution}</p>}
+      {degree == "" ? null : <p>degree: {degree}</p>}
+      {major == "" ? null : <p>major :{major}</p>}
+      {graduationYear == "" ? null : <p>graduationYear :{graduationYear}</p>}
     </div>
-  )
+  );
 }
 
-export default EducationDisplay
+export default EducationDisplay;

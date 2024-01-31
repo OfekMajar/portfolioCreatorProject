@@ -7,7 +7,9 @@
   padding: 10px;
 }
 
-
+.categoryHeader{
+  
+}
 .userFullName {
   display: flex;
   flex-direction: column;
@@ -27,7 +29,6 @@
 }
 .leftContentColumn,
 .rightContentColumn {
-  height: 100%;
   display: flex;
   width: 50%;
   flex-direction: column;
@@ -43,4 +44,19 @@
 }
 .aboutMe {
   width: 80%;
+  border-bottom:3px solid rgba(128, 128, 128, 0.591);
+
 }
+.displaySingleEducation ,.displaySingleWorkExp{
+display: flex;
+flex-direction: column;
+gap: 1px;
+  border-bottom:3px solid rgba(128, 128, 128, 0.591);
+}
+.displaySingleEducation p, .displaySingleWorkExp p{
+margin: 0;
+}
+.contactInfo{
+  border-bottom:3px solid rgba(128, 128, 128, 0.591);
+}
+
