@@ -3,6 +3,9 @@
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
+  height: 8vh;
+  background-color: rgba(173, 216, 230, 0.194);
+  font-size: 25px;
 }
 li {
   list-style-type: none;
@@ -15,4 +18,61 @@ li {
 .userNameDisplay {
   display: flex;
   gap: 5px;
+}
+/* Add this to your CSS stylesheet */
+.userNameDisplay {
+  display: flex;
+  align-items: center;
+}
+
+.userNameDisplay p {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #333; 
+}
+
+
+.userNameDisplay {
+  display: flex;
+  align-items: center;
+}
+
+.userNameDisplay p {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.authNavBtn {
+  padding: 10px 15px;
+  margin: 0 5px;
+  background-color: #4285f4; /* Adjust the background color */
+  color: #fff; /* Text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  font-size: 20px;
+
+  /* Hover styles */
+  &:hover {
+    background-color: #3c79e6; /* Adjust the hover background color */
+  }
+}
+
+#navbarContainer {
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+
+#navbarContainer li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transform: scale(1);
+
+}
+#navbarContainer li:hover{
+    transform: scale(1.1);
+
 }

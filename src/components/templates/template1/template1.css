@@ -5,10 +5,13 @@
   width: 450px;
   min-height: 600px;
   padding: 10px;
+  align-items: center;
 }
-
+.allContentContainer{
+  width: 100%;
+}
 .categoryHeader{
-  
+  text-decoration: underline;
 }
 .userFullName {
   display: flex;
@@ -22,6 +25,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .contentColumn {
   height: 95%;

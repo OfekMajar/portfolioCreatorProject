@@ -25,9 +25,9 @@ function Template1({ isSmall ,isPreview,workExp,educations,contactInfo}) {
     },
   ]);
   return (
-    <div id="temp1Container"className={isSmall ? "smallTemplate" : "bigTemplate"}>
+    <div id="temp1Container"className={`actual-receipt ${isSmall ? "smallTemplate" : "bigTemplate"}`}>
         {/* checks if its a preview or not */}
-        {isPreview?<div> <section className="userFullName">
+        {isPreview?<div id="allContentContainer"> <section className="userFullName">
         <span id="firstName">{previewContactInfo.firstName}</span>
         <span id="lastName">{previewContactInfo.lastName}</span>
       </section>
@@ -66,7 +66,7 @@ function Template1({ isSmall ,isPreview,workExp,educations,contactInfo}) {
           </div>
         </div>
       </section></div>:
-      <div> <section className="userFullName">
+      <div id="allContentContainer"> <section className="userFullName">
       <span id="firstName">{contactInfo.firstName}</span>
       <span id="lastName">{contactInfo.lastName}</span>
     </section>

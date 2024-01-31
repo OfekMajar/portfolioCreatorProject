@@ -28,8 +28,9 @@ gap: 20px;
 .selectedTemplate{
   border: 2px solid blue;
 }
-img{
+.templateOption{
   width: 100%;
+  height: 100%;
 }
 #templateViewer{
   width: 50%;

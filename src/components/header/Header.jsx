@@ -10,23 +10,18 @@ function Header() {
       {user ? (
         <div className="userNameDisplay">
           <p>{user.userName}</p>
-          <button onClick={signOutHandler}>LogOut</button>
+          <button className="authNavBtn" onClick={signOutHandler}>LogOut</button>
         </div>
       ) : (
         <div className="userNameDisplay">
           <p>guest</p>
-          <button>
+          <button className="authNavBtn">
             <Link to={"/Authentication"}>Login</Link>
           </button>
         </div>
       )}
       <Navbar />
-      <button
-        onClick={() => {
-          console.log(user);
-        }}>
-        user tester
-      </button>
+   
     </header>
   );
 }

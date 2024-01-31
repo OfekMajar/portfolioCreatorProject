@@ -1,0 +1,78 @@
+#temp2Container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #333;
+    width: 450px;
+    min-height: 600px;
+    padding: 20px;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Adding a subtle box shadow */
+  }
+  
+  #allContentContainer {
+    width: 100%;
+  }
+  
+  .userFullName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .userFullName span {
+    font-size: 30px;
+    margin: 5px 0;
+  }
+  
+  .content {
+    width: 100%;
+  }
+  
+  .contentColumn {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  }
+  
+  .categoryHeader {
+    text-decoration: underline;
+    margin-bottom: 10px;
+  }
+  
+  .contactInfo,
+  .workExperience,
+  .education,
+  .aboutMe {
+    width: 48%; /* Adjust the width based on your preference */
+    margin-bottom: 20px;
+  }
+  
+  .aboutMe {
+    width: 100%; /* Full width for 'About Me' section */
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive styling for smaller screens */
+  @media (max-width: 768px) {
+    .contentColumn {
+      flex-direction: column;
+    }
+  
+    .contactInfo,
+    .workExperience,
+    .education,
+    .aboutMe {
+      width: 100%;
+    }
+  }
+  

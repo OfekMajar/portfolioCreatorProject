@@ -5,7 +5,6 @@ function Navbar() {
     <nav id='navbarContainer'>
       <li><Link to={"/"}>Home</Link></li>
       <li><Link to={"/MyResumes"}>My Resumes</Link></li>
-      <li><Link to={"/ResumeCreator"}>Resume Creator</Link></li>
     </nav>
   )
 }

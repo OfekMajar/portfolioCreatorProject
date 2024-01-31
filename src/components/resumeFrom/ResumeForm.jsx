@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
-import WorkExperiences from "./WorkExperiences";
-import Educations from "./Educations";
-import ContactInfo from "./ContactInfo";
-import { UserContext } from "../context/User";
+import WorkExperiences from "../WorkExperiences";
+import Educations from "../Educations";
+import ContactInfo from "../ContactInfo";
+import { UserContext } from "../../context/User";
 import { addDoc, collection, doc, query } from "firebase/firestore";
-import { db } from "../config/firebase";
-import Template1 from "./templates/template1/template1";
-function ResumeForm({selectedTemplate,resumeName}) {
+import { db } from "../../config/firebase";
+import Template1 from "../templates/template1/template1";
+function ResumeForm({ selectedTemplate, resumeName }) {
   const { user } = useContext(UserContext);
   const [formData, setFormData] = useState({});
   const [workExpData, setWorkExpData] = useState({});
@@ -15,10 +15,14 @@ function ResumeForm({selectedTemplate,resumeName}) {
   const [educationsList, setEducationsList] = useState([]);
   const [currentFormStage, setCurrentFormStage] = useState(1);
   const [resumeData, setResumeData] = useState({});
-  console.log(selectedTemplate,user.userId);
-  useEffect(()=>{
-setResumeData({ userId: user.userId,selectedTemplate:selectedTemplate,resumeName:resumeName})
-  },[selectedTemplate])
+  console.log(selectedTemplate, user.userId);
+  useEffect(() => {
+    setResumeData({
+      userId: user.userId,
+      selectedTemplate: selectedTemplate,
+      resumeName: resumeName,
+    });
+  }, [selectedTemplate]);
   //*Change handlers
   const changeContactInfoHandler = (e) => {
     formData[e.target.name] = e.target.value;
@@ -85,7 +89,7 @@ setResumeData({ userId: user.userId,selectedTemplate:selectedTemplate,resumeName
         break;
       case 4:
         {
-          setResumeData({ ...resumeData});
+          setResumeData({ ...resumeData });
         }
         break;
       default:
@@ -97,17 +101,14 @@ setResumeData({ userId: user.userId,selectedTemplate:selectedTemplate,resumeName
     e.preventDefault();
     setCurrentFormStage(currentFormStage - 1);
   };
-  const sumbitHandler = async(e) => {
+  const sumbitHandler = async (e) => {
     e.preventDefault();
     if (!user) {
       return alert("you must log in ");
     }
     setResumeData({ ...resumeData });
-    const collectionRef = collection(db,"Resumes")
-   await addDoc(collectionRef,resumeData)
-    
-    
-    
+    const collectionRef = collection(db, "Resumes");
+    await addDoc(collectionRef, resumeData);
   };
   console.log(resumeData);
   return (
@@ -177,7 +178,12 @@ setResumeData({ userId: user.userId,selectedTemplate:selectedTemplate,resumeName
         ) : null}
         {currentFormStage == 4 ? (
           <div>
-            <Template1 isPreview={false} workExp={workExpList} educations={educationsList} contactInfo={formData} />
+            <Template1
+              isPreview={false}
+              workExp={workExpList}
+              educations={educationsList}
+              contactInfo={formData}
+            />
             <button type="sumbit">Sumbit</button>
           </div>
         ) : null}

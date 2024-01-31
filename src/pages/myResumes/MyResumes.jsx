@@ -13,11 +13,9 @@ function MyResumes() {
   },[user])
   return (
     <div>
-      <button onClick={()=>{console.log(resumes);}}>test resumes</button>'
       <div id='myResumesContainer'> 
       {resumes.map(item=>{
-  
-       return <MyResumeCard selectedTemplate={item.selectedTemplate} resumeName={item.resumeName} />
+       return <MyResumeCard resumeId={item.resumeId} selectedTemplate={item.resumeData.selectedTemplate} resumeName={item.resumeData.resumeName} />
       })}
       </div>
     </div>

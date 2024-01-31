@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import ResumeForm from "../../components/ResumeForm";
+import ResumeForm from "../../components/resumeFrom/ResumeForm";
+import Template2 from "../../components/templates/template2/Template2";
 import Template1 from "../../components/templates/template1/template1";
 import template1Img from "../../assets/Images/template1.png";
+import template2Img from"../../assets/Images/template2.png";
 import MiniTemplate from "../../components/templates/miniTamplate/MiniTemplate";
 import "./resumeCreator.css";
+
 function ResumeCreator() {
   const [isChoosingTemplate, setIsChoosingTemplate] = useState(true);
   const [selectedTemplate, setSelectedTemplate] = useState("1");
   const [resumeName, setResumeName] = useState("");
-
   const viewedTemplateSelector = (e) => {
     setSelectedTemplate(e.target.name);
   };
@@ -17,7 +19,7 @@ function ResumeCreator() {
   };
   const confirmTemplate = () => {
     let confirmTemp;
-    // confirmTemp =confirm("are you sure you want this template?")
+    confirmTemp = confirm("are you sure you want this template?");
     if (!confirmTemp) {
       return;
     }
@@ -52,7 +54,7 @@ function ResumeCreator() {
                   selectedTemplate == "2" ? "selectedTemplate" : null
                 }`}>
                 <img
-                  src={template1Img}
+                  src={template2Img}
                   onClick={viewedTemplateSelector}
                   name={"2"}
                   alt="template2"
@@ -96,11 +98,11 @@ function ResumeCreator() {
             </button>
           </div>
           <section id="templateViewer">
-            {selectedTemplate == 1 ? (
+            {selectedTemplate == "1" ? (
               <Template1 isPreview={true} />
-            ) : selectedTemplate == 2 ? (
-              2
-            ) : selectedTemplate == 3 ? (
+            ) : selectedTemplate == "2" ? ( <Template2 isPreview={true}></Template2>) 
+             
+            : selectedTemplate == 3 ? (
               3
             ) : null}
           </section>
