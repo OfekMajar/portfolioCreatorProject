@@ -33,8 +33,8 @@ function ResumeCreator() {
       {isChoosingTemplate ? (
         <div id="templateChooserContainer">
           <section id="templatesOptionsContainer">
-            <div>
-              <p>Choose your template</p>
+            <div className="templateChooserHeader">
+              <p >Choose your template</p>
             </div>
             <div id="templateOptions">
               <div
@@ -61,30 +61,7 @@ function ResumeCreator() {
                   className="templateOption"
                 />
               </div>
-              <div
-                className={`singleOptionBox ${
-                  selectedTemplate == "3" ? "selectedTemplate" : null
-                }`}>
-                <img
-                  src={template1Img}
-                  onClick={viewedTemplateSelector}
-                  name={"3"}
-                  alt="template3"
-                  className="templateOption"
-                />
-              </div>
-              <div
-                className={`singleOptionBox ${
-                  selectedTemplate == "4" ? "selectedTemplate" : null
-                }`}>
-                <img
-                  src={template1Img}
-                  onClick={viewedTemplateSelector}
-                  name={"4"}
-                  alt="template4"
-                  className="templateOption"
-                />
-              </div>
+
             </div>
           </section>
           <div className="confirmTemplateBtnContainer">

@@ -1,0 +1,59 @@
+.formSubjetHeader {
+  display: flex;
+  justify-content: center;
+}
+.lableAndInput input {
+  height: 20px;
+  border-radius: 5px;
+}
+.nextStageBtn {
+  font-size: 30px;
+  position: absolute;
+  right: 0;
+}
+.prevStageBtn {
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+}
+.nextAndPrevBtnBox {
+  margin: 5px 0px;
+  position: relative;
+  height: 30px;
+}
+/** contact info */
+.contactInfoSection {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+}
+#aboutMeInput {
+  height: 100px;
+}
+/**  */
+.lableAndInput {
+  display: flex;
+  flex-direction: column;
+}
+.workExpContainer,
+.educationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.singleWorkExpContainer,
+.SingleEducationContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1px;
+  border: 1px solid black;
+}
+#ResumeFormContainer form {
+  width: 35vw;
+}
+
+textarea {
+  resize: none;
+}

@@ -15,18 +15,28 @@
 #templateOptions {
 display: flex;
 flex-wrap: wrap;
-gap: 20px;
+justify-content: space-around;
 }
 .singleOptionBox{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 35%;
+  width: 150px;
   height: auto;
   border-radius: 5px;
 }
 .selectedTemplate{
   border: 2px solid blue;
+}
+.templateChooserHeader {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.templateChooserHeader {
+  font-size: 25px;
+  font-weight: 600;
 }
 .templateOption{
   width: 100%;
@@ -62,26 +72,4 @@ button:hover{
   cursor: pointer;
 }
 
-#workExpContainer,
-#educationContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.singleWorkExpContainer,
-.SingleEducationContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 1px;
-  border: 1px solid black;
-}
-#ResumeFormContainer form {
-  width: 35vw;
-}
-.lableAndInput {
-  display: flex;
-  justify-content: space-between;
-}
-textarea {
-  resize: none;
-}
+

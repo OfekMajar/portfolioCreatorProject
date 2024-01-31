@@ -1,9 +1,8 @@
 import React from 'react'
-
-function ContactInfo({changeHandler}) {
+function ContactInfo({changeHandler,nextStage}) {
   return (
-    <section id="contactInfoSection">
-          <h2>Contact Info:</h2>
+    <section className="contactInfoSection">
+          <h2 className='formSubjetHeader'>Contact Info:</h2>
           <div>
             <div className="lableAndInput">
               <label htmlFor="">First name</label>
@@ -41,13 +40,19 @@ function ContactInfo({changeHandler}) {
             </div>
           </div>
           <div className="lableAndInput">
-            <label htmlFor="">About me:</label>
+            <label htmlFor="aboutMeInput">About me:</label>
             <textarea
               onChange={changeHandler}
               name="aboutMe"
               type="text"
               id="aboutMeInput"
             />
+          </div>
+          <div className="nextAndPrevBtnBox"> 
+            <button type="button" onClick={nextStage} className="nextStageBtn" name="userContactInfo">
+              {" "}
+              Next
+            </button>
           </div>
         </section>
   )

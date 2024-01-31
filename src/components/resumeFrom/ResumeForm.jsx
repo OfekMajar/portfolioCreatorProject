@@ -6,6 +6,7 @@ import { UserContext } from "../../context/User";
 import { addDoc, collection, doc, query } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import Template1 from "../templates/template1/template1";
+import "./resumeForm.css";
 function ResumeForm({ selectedTemplate, resumeName }) {
   const { user } = useContext(UserContext);
   const [formData, setFormData] = useState({});
@@ -114,9 +115,9 @@ function ResumeForm({ selectedTemplate, resumeName }) {
   return (
     <form onSubmit={sumbitHandler}>
       {currentFormStage == 1 ? (
-        <ContactInfo changeHandler={changeContactInfoHandler} />
+        <ContactInfo nextStage={nextStage} changeHandler={changeContactInfoHandler} />
       ) : currentFormStage == 2 ? (
-        <section id="workExpContainer">
+        <section className={"workExpContainer"}>
           <h2>Work experience:</h2>
           {workExpRederList.map((item) => {
             return item;
@@ -138,33 +139,28 @@ function ResumeForm({ selectedTemplate, resumeName }) {
           </button>
         </section>
       ) : null}
-      <section id="nextAndPrevBtns">
+      <section class="nextAndPrevBtns">
         {currentFormStage == 1 ? (
-          <div>
-            <button type="button" onClick={nextStage} name="userContactInfo">
-              {" "}
-              Next
-            </button>
-          </div>
+          null
         ) : null}
         {currentFormStage == 2 ? (
-          <div>
-            <button type="button" onClick={prevStage}>
+          <div class="nextAndPrevBtnBox">
+            <button type="button" onClick={prevStage} className="prevStageBtn">
               {" "}
               Prev
             </button>
-            <button type="button" onClick={nextStage} name="userWorkExp">
+            <button type="button" onClick={nextStage} className="nextStageBtn" name="userWorkExp">
               Next{" "}
             </button>
           </div>
         ) : null}
         {currentFormStage == 3 ? (
           <div>
-            <button type="button" onClick={prevStage}>
+            <button type="button" onClick={prevStage} className="prevStageBtn">
               {" "}
               Prev
             </button>
-            <button onClick={nextStage} name="educations">
+            <button onClick={nextStage} className="nextStageBtn" name="educations">
               next
             </button>
             <button
