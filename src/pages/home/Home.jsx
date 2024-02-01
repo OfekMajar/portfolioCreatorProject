@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./home.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/User";
 function Home() {
+  const {user} =useContext(UserContext);
+  const navigate=useNavigate()
+  const goToResumeCreator=()=>{
+    if(user){
+      navigate("/ResumeCreator")
+    }
+   else{
+    navigate("/Authentication")
+
+   }
+  }
   return (
     <div className={styles.homeContainer}>
+      
       <div className={styles.containerLeftAndRight}>
         <div className={styles.leftSide}>
           <section>
             <p>Free online resume builder</p>
-            <Link to={"/ResumeCreator"}>
-              {" "}
-              <button>Build my resume</button>
-            </Link>
+            
+              <button onClick={goToResumeCreator}>Build my resume</button>
+           
           </section>
         </div>
         <div className={styles.rightSide}>

@@ -7,6 +7,7 @@ import { addDoc, collection, doc, query } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import Template1 from "../templates/template1/template1";
 import "./resumeForm.css";
+import Template2 from "../templates/template2/Template2";
 function ResumeForm({ selectedTemplate, resumeName }) {
   const { user } = useContext(UserContext);
   const [formData, setFormData] = useState({});
@@ -184,13 +185,20 @@ function ResumeForm({ selectedTemplate, resumeName }) {
           </div>
         ) : null}
         {currentFormStage == 4 ? (
+          
           <div>
-            <Template1
+            {selectedTemplate==1? <Template1
               isPreview={false}
               workExp={workExpList}
               educations={educationsList}
               contactInfo={formData}
-            />
+            />: <Template2
+            isPreview={false}
+            workExp={workExpList}
+            educations={educationsList}
+            contactInfo={formData}
+          />}
+           
             <button type="sumbit">Sumbit</button>
           </div>
         ) : null}

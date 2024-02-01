@@ -9,8 +9,8 @@ import {
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-
-function Authentication() {
+import "./auth.css";
+function Authentication(props) {
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [dataForm, setDataForm] = useState({});
   const { setUserFromDb } = useContext(UserContext);
@@ -35,10 +35,11 @@ function Authentication() {
           userEmail,
           userName,
           role: "regular",
-          userId:user.uid
+          userId: user.uid,
         });
         setIsLoginMode(true);
-
+        navigate("/")
+        props.setShowLogin(false)
         // ...
       })
       .catch((error) => {
@@ -56,6 +57,7 @@ function Authentication() {
         const user = userCredential.user;
         navigate("/");
         setUserFromDb(user);
+        props.setShowLogin(false)
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -64,7 +66,8 @@ function Authentication() {
       });
   };
   return (
-    <div id="authContainer">
+    <div className="authContainer">
+
       {isLoginMode ? (
         <LogIn
           toggleMode={toggleMode}
