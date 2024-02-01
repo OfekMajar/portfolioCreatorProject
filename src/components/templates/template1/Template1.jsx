@@ -66,7 +66,7 @@ function Template1({ isSmall ,isPreview,workExp,educations,contactInfo}) {
           </div>
         </div>
       </section></div>:
-      <div id="allContentContainer"> <section className="userFullName">
+      <div className="allContentContainer"> <section className="userFullName">
       <span id="firstName">{contactInfo.firstName}</span>
       <span id="lastName">{contactInfo.lastName}</span>
     </section>

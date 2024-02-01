@@ -58,7 +58,11 @@ li {
     background-color: #3c79e6; /* Adjust the hover background color */
   }
 }
-
+.authNavBtn a{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
 #navbarContainer {
   list-style: none;
   display: flex;

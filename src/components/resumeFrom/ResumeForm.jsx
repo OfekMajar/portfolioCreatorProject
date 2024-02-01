@@ -51,6 +51,7 @@ function ResumeForm({ selectedTemplate, resumeName }) {
       ...workExpRederList,
       <WorkExperiences changeHandler={handleWorkExp} />,
     ]);
+    setWorkExpData({})
   };
 
   const createMoreEducation = (e) => {
@@ -59,6 +60,7 @@ function ResumeForm({ selectedTemplate, resumeName }) {
       ...educationRenderList,
       <Educations changeHandler={handleChangeEducation} />,
     ]);
+    setEducationData({})
   };
 
   useEffect(() => {
@@ -115,61 +117,70 @@ function ResumeForm({ selectedTemplate, resumeName }) {
   return (
     <form onSubmit={sumbitHandler}>
       {currentFormStage == 1 ? (
-        <ContactInfo nextStage={nextStage} changeHandler={changeContactInfoHandler} />
+        <ContactInfo
+          nextStage={nextStage}
+          changeHandler={changeContactInfoHandler}
+        />
       ) : currentFormStage == 2 ? (
-        <section className={"workExpContainer"}>
+        <section className={"workExpSection"}>
           <h2>Work experience:</h2>
           {workExpRederList.map((item) => {
             return item;
           })}
-          <button name="workExp" onClick={createMoreWorkExp}>
+          <button
+            className="addAnotherBtn"
+            name="workExp"
+            onClick={createMoreWorkExp}>
             {" "}
             add Another
           </button>
         </section>
       ) : currentFormStage == 3 ? (
-        <section id="educationContainer">
+        <section class="educationContainer">
           <h2>Education</h2>
           {educationRenderList.map((item) => {
             return item;
           })}
-          <button type="button" name="education" onClick={createMoreEducation}>
+          <button
+            type="button"
+            className="addAnotherBtn"
+            name="education"
+            onClick={createMoreEducation}>
             {" "}
             add Another
           </button>
         </section>
       ) : null}
       <section class="nextAndPrevBtns">
-        {currentFormStage == 1 ? (
-          null
-        ) : null}
+        {currentFormStage == 1 ? null : null}
         {currentFormStage == 2 ? (
           <div class="nextAndPrevBtnBox">
             <button type="button" onClick={prevStage} className="prevStageBtn">
               {" "}
               Prev
             </button>
-            <button type="button" onClick={nextStage} className="nextStageBtn" name="userWorkExp">
+            <button
+              type="button"
+              onClick={nextStage}
+              className="nextStageBtn"
+              name="userWorkExp">
               Next{" "}
             </button>
           </div>
         ) : null}
         {currentFormStage == 3 ? (
-          <div>
+          <div class="nextAndPrevBtnBox">
             <button type="button" onClick={prevStage} className="prevStageBtn">
               {" "}
               Prev
             </button>
-            <button onClick={nextStage} className="nextStageBtn" name="educations">
+            <button
+              onClick={nextStage}
+              className="nextStageBtn"
+              name="educations">
               next
             </button>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                console.log(resumeData);
-              }}>
-              resumeData
-            </button>
+          
           </div>
         ) : null}
         {currentFormStage == 4 ? (
