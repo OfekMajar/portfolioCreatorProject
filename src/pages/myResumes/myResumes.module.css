@@ -1,4 +1,4 @@
-#myResumesContainer {
+.myResumesContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -26,10 +26,15 @@
   display: flex;
   justify-content: center;
 }
-#loggedInErrorBtn {
+.loggedInErrorBtn {
   width: 100px;
   height: 80px;
 }
-#loggedInErrorBtn a {
+.loggedInErrorBtn a {
   font-size: 28px;
+}
+@media screen and (max-width: 450px) {
+  .myResumesContainer {
+    justify-content: center;
+  }
 }

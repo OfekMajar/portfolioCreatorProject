@@ -116,20 +116,20 @@ function ResumeForm({ selectedTemplate, resumeName }) {
   };
   console.log(resumeData);
   return (
-    <form onSubmit={sumbitHandler}>
+    <form className="resumeCreatorFrom" onSubmit={sumbitHandler}>
       {currentFormStage == 1 ? (
         <ContactInfo
           nextStage={nextStage}
           changeHandler={changeContactInfoHandler}
         />
       ) : currentFormStage == 2 ? (
-        <section className={"workExpSection"}>
+        <section className={"workExpSection formSection"}>
           <h2>Work experience:</h2>
           {workExpRederList.map((item) => {
             return item;
           })}
           <button
-            className="addAnotherBtn"
+            className="addAnotherBtn "
             name="workExp"
             onClick={createMoreWorkExp}>
             {" "}
@@ -137,7 +137,7 @@ function ResumeForm({ selectedTemplate, resumeName }) {
           </button>
         </section>
       ) : currentFormStage == 3 ? (
-        <section class="educationContainer">
+        <section class="educationContainer formSection">
           <h2>Education</h2>
           {educationRenderList.map((item) => {
             return item;

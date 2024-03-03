@@ -1,0 +1,32 @@
+.singleMyResumeCard {
+  height: fit-content;
+  width: 15vw;
+  transition: transform 0.5s;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.singleMyResumeCard:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.templateOption {
+  width: 100%;
+}
+
+.myResumeName {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+@media screen and (max-width: 450px) {
+  .singleMyResumeCard {
+    width: 30vw;
+    height: 230px;
+  }
+  .myResumeName {
+    font-size: 17px;
+  }
+}

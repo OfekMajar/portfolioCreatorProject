@@ -29,6 +29,9 @@
   flex-direction: column;
   font-size: 20px;
 }
+.formSection {
+  width: 50vw;
+}
 /** contact info */
 .contactInfoSection {
   display: flex;
@@ -68,4 +71,10 @@
 
 textarea {
   resize: none;
+}
+
+@media screen and (max-width: 450px) {
+  .resumeCreatorFrom {
+    width: 60vw;
+  }
 }

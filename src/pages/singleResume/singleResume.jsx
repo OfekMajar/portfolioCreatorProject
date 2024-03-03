@@ -3,7 +3,6 @@ import Template1Img from "../../assets/Images/template1.png";
 import Template1 from "../../components/templates/template1/template1";
 import Template2 from "../../components/templates/template2/Template2";
 import { useParams } from "react-router-dom";
-import { ResumesContext } from "../../context/Resumes";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import "./singleResume.css";

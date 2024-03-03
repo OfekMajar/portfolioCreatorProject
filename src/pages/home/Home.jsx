@@ -22,7 +22,7 @@ function Home() {
           <section>
             <p>Free online resume builder</p>
             
-              <button onClick={goToResumeCreator}>Build my resume</button>
+              <button className={styles.startBtn} onClick={goToResumeCreator}>Build my resume</button>
            
           </section>
         </div>

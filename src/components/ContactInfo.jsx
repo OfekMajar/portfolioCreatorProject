@@ -1,7 +1,7 @@
 import React from 'react'
 function ContactInfo({changeHandler,nextStage}) {
   return (
-    <section className="contactInfoSection">
+    <section className="contactInfoSection formSection">
           <h2 className='formSubjetHeader'>Contact Info:</h2>
           <div>
             <div className="lableAndInput">
