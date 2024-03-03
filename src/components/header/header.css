@@ -19,7 +19,6 @@ li {
   display: flex;
   gap: 5px;
 }
-/* Add this to your CSS stylesheet */
 .userNameDisplay {
   display: flex;
   align-items: center;
@@ -45,17 +44,16 @@ li {
 .authNavBtn {
   padding: 10px 15px;
   margin: 0 5px;
-  background-color: #4285f4; /* Adjust the background color */
-  color: #fff; /* Text color */
+  background-color: #4285f4; 
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  transition: background-color 0.3s ease;
   font-size: 20px;
 
-  /* Hover styles */
   &:hover {
-    background-color: #3c79e6; /* Adjust the hover background color */
+    background-color: #3c79e6; 
   }
 }
 .authNavBtn a{

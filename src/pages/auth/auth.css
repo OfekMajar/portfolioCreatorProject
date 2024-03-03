@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50vh;
+  height: 60vh;
   margin-top: 10vh;
 }
 .logInModeContainer {
@@ -61,7 +61,7 @@
   font-weight: 500;
 }
 .switchSignUpLogInBtn {
-    cursor: pointer;;
+  cursor: pointer;
   align-self: flex-end;
   color: #1976d2;
 }
