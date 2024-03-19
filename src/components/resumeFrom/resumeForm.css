@@ -10,11 +10,13 @@
   font-size: 30px;
   position: absolute;
   right: 0;
+  background-color: #4285f4;
 }
 .prevStageBtn {
   font-size: 30px;
   position: absolute;
   left: 0;
+  background-color: #4285f4;
 }
 .nextAndPrevBtnBox {
   margin: 5px 0px;
@@ -23,6 +25,7 @@
 }
 .addAnotherBtn {
   font-size: 30px;
+  background-color: #4285f4;
 }
 .lableAndInput {
   display: flex;
@@ -54,8 +57,10 @@
   flex-direction: column;
   border: 1px solid black;
   padding: 10px;
-  border-radius: 5px;
   gap: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #4286f4;
+  background: #4285f440;
 }
 /**  */
 .singleWorkExpContainer,
@@ -73,6 +78,29 @@ textarea {
   resize: none;
 }
 
+.resumeFormSubmitBtn {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 10px;
+  background-color: #ff0000;
+  color: #fff;
+  transition: all 0.1s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.resumeFormSubmitBtn:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+.resumeFormSubmitBtn:active {
+  transform: translateY(5px);
+  box-shadow: none;
+}
+.finalStageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 @media screen and (max-width: 450px) {
   .resumeCreatorFrom {
     width: 60vw;

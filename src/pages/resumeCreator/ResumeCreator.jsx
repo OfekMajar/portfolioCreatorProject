@@ -5,12 +5,13 @@ import template2Img from "../../assets/Images/template2.png";
 import styles from "./resumeCreator.module.css";
 import { UserContext } from "../../context/User";
 import { Link } from "react-router-dom";
-
+import FormLifeCycle from "../../components/FormLifeCycle";
 function ResumeCreator() {
   const { user } = useContext(UserContext);
   const [isChoosingTemplate, setIsChoosingTemplate] = useState(true);
   const [selectedTemplate, setSelectedTemplate] = useState("1");
   const [resumeName, setResumeName] = useState("");
+  const [currentFormStage, setCurrentFormStage] = useState(1);
 
   const viewedTemplateSelector = (e) => {
     setSelectedTemplate(e.target.name);
@@ -100,8 +101,15 @@ function ResumeCreator() {
             </div>
           ) : (
             <div className={styles.formBox}>
-              <section className={styles.stageSection}>df </section>
+              <section className={styles.stageSection}>
+                <FormLifeCycle
+                  stage={currentFormStage}
+                  setCurrentFormStage={setCurrentFormStage}
+                />
+              </section>
               <ResumeForm
+                currentFormStage={currentFormStage}
+                setCurrentFormStage={setCurrentFormStage}
                 resumeName={resumeName}
                 selectedTemplate={selectedTemplate}
               />

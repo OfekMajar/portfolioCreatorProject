@@ -8,14 +8,19 @@ import { db } from "../../config/firebase";
 import Template1 from "../templates/template1/template1";
 import "./resumeForm.css";
 import Template2 from "../templates/template2/Template2";
-function ResumeForm({ selectedTemplate, resumeName }) {
+function ResumeForm({
+  selectedTemplate,
+  resumeName,
+  currentFormStage,
+  setCurrentFormStage,
+}) {
   const { user } = useContext(UserContext);
   const [formData, setFormData] = useState({});
   const [workExpData, setWorkExpData] = useState({});
   const [workExpList, setWorkExpList] = useState([]);
   const [educationData, setEducationData] = useState({});
   const [educationsList, setEducationsList] = useState([]);
-  const [currentFormStage, setCurrentFormStage] = useState(1);
+
   const [resumeData, setResumeData] = useState({});
   console.log(selectedTemplate, user.userId);
   useEffect(() => {
@@ -52,7 +57,7 @@ function ResumeForm({ selectedTemplate, resumeName }) {
       ...workExpRederList,
       <WorkExperiences changeHandler={handleWorkExp} />,
     ]);
-    setWorkExpData({})
+    setWorkExpData({});
   };
 
   const createMoreEducation = (e) => {
@@ -61,7 +66,7 @@ function ResumeForm({ selectedTemplate, resumeName }) {
       ...educationRenderList,
       <Educations changeHandler={handleChangeEducation} />,
     ]);
-    setEducationData({})
+    setEducationData({});
   };
 
   useEffect(() => {
@@ -131,7 +136,8 @@ function ResumeForm({ selectedTemplate, resumeName }) {
           <button
             className="addAnotherBtn "
             name="workExp"
-            onClick={createMoreWorkExp}>
+            onClick={createMoreWorkExp}
+            type="button">
             {" "}
             add Another
           </button>
@@ -147,7 +153,6 @@ function ResumeForm({ selectedTemplate, resumeName }) {
             className="addAnotherBtn"
             name="education"
             onClick={createMoreEducation}>
-            {" "}
             add Another
           </button>
         </section>
@@ -181,25 +186,29 @@ function ResumeForm({ selectedTemplate, resumeName }) {
               name="educations">
               next
             </button>
-          
           </div>
         ) : null}
         {currentFormStage == 4 ? (
-          
-          <div>
-            {selectedTemplate==1? <Template1
-              isPreview={false}
-              workExp={workExpList}
-              educations={educationsList}
-              contactInfo={formData}
-            />: <Template2
-            isPreview={false}
-            workExp={workExpList}
-            educations={educationsList}
-            contactInfo={formData}
-          />}
-           
-            <button type="sumbit">Sumbit</button>
+          <div className="finalStageContainer">
+            {selectedTemplate == 1 ? (
+              <Template1
+                isPreview={false}
+                workExp={workExpList}
+                educations={educationsList}
+                contactInfo={formData}
+              />
+            ) : (
+              <Template2
+                isPreview={false}
+                workExp={workExpList}
+                educations={educationsList}
+                contactInfo={formData}
+              />
+            )}
+
+            <button className="resumeFormSubmitBtn" type="sumbit">
+              Sumbit
+            </button>
           </div>
         ) : null}
       </section>
